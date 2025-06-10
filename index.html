@@ -15,6 +15,44 @@
   </head>
   <body class="bg-gray-50">
     <div id="root"></div>
+    <!-- 🚀 Lead Capture Form START -->
+<section class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow">
+  <h2 class="text-xl font-bold mb-4">Get in Touch</h2>
+  <form name="leadForm" method="POST" netlify>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Full Name</label>
+      <input type="text" name="name" required class="w-full mt-1 border p-2 rounded" />
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Email</label>
+      <input type="email" name="email" required class="w-full mt-1 border p-2 rounded" />
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Phone</label>
+      <input type="tel" name="phone" class="w-full mt-1 border p-2 rounded" />
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Are you a buyer or seller?</label>
+      <select name="type" required class="w-full mt-1 border p-2 rounded">
+        <option value="buyer">Buyer</option>
+        <option value="seller">Seller</option>
+      </select>
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Budget (Optional)</label>
+      <input type="text" name="budget" class="w-full mt-1 border p-2 rounded" />
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Message</label>
+      <textarea name="message" rows="4" class="w-full mt-1 border p-2 rounded"></textarea>
+    </div>
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      Submit
+    </button>
+  </form>
+</section>
+<!-- 🚀 Lead Capture Form END -->
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
