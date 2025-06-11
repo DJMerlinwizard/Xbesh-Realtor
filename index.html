@@ -1,59 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="icon" href="/favicon.ico" />
-<title>Xbesh Realtor | Powered by Egea Enterprises</title>
-
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <meta name="description" content="Find potential real estate clients from Reddit discussions about mortgages, home buying, and refinancing." />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta
+      name="description"
+      content="Find potential real estate clients from Reddit discussions about mortgages, home buying, and refinancing."
+    />
+    <title>Xbesh Realtor | Powered by Egea Enterprises</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Modal Style Tweaks -->
+    <style>
+      #root {
+        position: relative;
+        z-index: 10;
+      }
+      #contactModal {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+    </style>
   </head>
+
   <body class="bg-gray-50 relative z-10">
     <div id="root"></div>
-   
-<!-- 🚀 Lead Capture Form START -->
-<section class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow relative z-50 bg-white">
-  <h2 class="text-xl font-bold mb-4">Get in Touch</h2>
-  <form name="leadForm" method="POST" netlify>
-    <div class="mb-4">
-      <label class="block text-sm font-medium">Full Name</label>
-      <input type="text" name="name" required class="w-full mt-1 border p-2 rounded" />
-    </div>
-    <div class="mb-4">
-      <label class="block text-sm font-medium">Email</label>
-      <input type="email" name="email" required class="w-full mt-1 border p-2 rounded" />
-    </div>
-    <div class="mb-4">
-      <label class="block text-sm font-medium">Phone</label>
-      <input type="tel" name="phone" class="w-full mt-1 border p-2 rounded" />
-    </div>
-    <div class="mb-4">
-      <label class="block text-sm font-medium">Are you a buyer or seller?</label>
-      <select name="type" required class="w-full mt-1 border p-2 rounded">
-        <option value="buyer">Buyer</option>
-        <option value="seller">Seller</option>
-      </select>
-    </div>
-    <div class="mb-4">
-      <label class="block text-sm font-medium">Budget (Optional)</label>
-      <input type="text" name="budget" class="w-full mt-1 border p-2 rounded" />
-    </div>
-    <div class="mb-4">
-      <label class="block text-sm font-medium">Message</label>
-      <textarea name="message" rows="4" class="w-full mt-1 border p-2 rounded"></textarea>
-    </div>
-    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-      Submit
-    </button>
-  </form>
-</section>
-<!-- 🚀 Lead Capture Form END -->
 
+    <!-- 💬 Get in Touch Floating Button -->
+    <button
+      onclick="toggleForm(true)"
+      class="fixed bottom-6 right-6 bg-pink-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-pink-700 z-50"
+    >
+      💬 Get in Touch
+    </button>
+
+    <!-- 🚀 Modal Form -->
+    <div
+      id="contactModal"
+      class="hidden fixed inset-0 flex items-center justify-center z-50"
+    >
+      <div class="modal-content bg-white max-w-lg w-full p-6 rounded-xl shadow-lg relative">
+        <button
+          onclick="toggleForm(false)"
+          class="absolute top-2 right-2 text-gray-500 hover:text-black text-xl"
+        >
+          ✖️
+        </button>
+        <h2 class="text-xl font-bold mb-4">Get in Touch</h2>
+        <form name="leadForm" method="POST" netlify>
+          <div class="mb-4">
+            <label class="block text-sm font-medium">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full mt-1 border p-2 rounded"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full mt-1 border p-2 rounded"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium">Phone</label>
+            <input
+              type="tel"
+              name="phone"
+              class="w-full mt-1 border p-2 rounded"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium"
+              >Are you a buyer or seller?</label
+            >
+            <select
+              name="type"
+              required
+              class="w-full mt-1 border p-2 rounded"
+            >
+              <option value="buyer">Buyer</option>
+              <option value="seller">Seller</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium">Budget (Optional)</label>
+            <input
+              type="text"
+              name="budget"
+              class="w-full mt-1 border p-2 rounded"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium">Message</label>
+            <textarea
+              name="message"
+              rows="4"
+              class="w-full mt-1 border p-2 rounded"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- 🧠 Toggle Script -->
+    <script>
+      function toggleForm(show) {
+        document.getElementById("contactModal").classList.toggle("hidden", !show);
+      }
+    </script>
+
+    <!-- React / Vite entry -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
